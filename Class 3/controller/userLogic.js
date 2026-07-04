@@ -1,6 +1,6 @@
 import employee from '../database/data.js'
 
-const getUser = (req,res)=>{
+function getUser(req,res){
     try {
         res.status(200).json({
             success:true,
@@ -18,6 +18,7 @@ const getUser = (req,res)=>{
 }
 
 
+ 
 
 
 export {getUser}
