@@ -1,11 +1,17 @@
 import express from 'express'
-import { createUser } from '../controller/userLogic.js'
+import { createUser, deleteUser, getUser, updateUser } from '../controller/userLogic.js'
 
 const router = express.Router()
 
 
   router.post('/createuser', createUser)
 
-export default router
+  router.get('/getuser',  getUser)
 
+  router.put('/updateuser/:userid', updateUser)
+
+  router.delete('/deleteuser/:userid', deleteUser)
+
+export default router
+ 
  
