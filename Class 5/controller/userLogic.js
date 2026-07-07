@@ -36,4 +36,15 @@ const createUser = async (req,res)=> {
     }
 }
 
+
+
+const getUser = async (req,res)=> {
+    try {
+        console
+    }catch (error) {}
+}
+
+const updateUser = async (req,res)=> {
+}
+
 export {createUser}
