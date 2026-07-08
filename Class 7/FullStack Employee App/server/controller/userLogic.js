@@ -63,10 +63,13 @@ const getUser  = async (req, res) =>{
 }
 
 const updateUser = async(req,res)=>{
-    try {
+    try { 
+        console.log('first')
          const {name, email, empId} = req.body
 
         let {userid} = req.params
+
+        console.log(userid, name, email, empId)
 
         let user = await User.findById(userid)
 
