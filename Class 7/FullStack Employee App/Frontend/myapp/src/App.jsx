@@ -6,6 +6,10 @@ import EmployeeCards from './components/EmployeeCards'
      <div>
         <EmployeeCards/>
 
+        {/* {
+          EmployeeCards()
+        } */}
+
      </div>
    )
  }

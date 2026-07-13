@@ -1,6 +1,7 @@
 
 import User from '../model/user.js'
 
+
 const createUser = async (req,res)=> {
 
     try {
@@ -36,6 +37,7 @@ const createUser = async (req,res)=> {
     }
 }
 
+
 const getUser  = async (req, res) =>{
     try {
         const user = await User.find()
@@ -49,7 +51,7 @@ const getUser  = async (req, res) =>{
 
         res.status(200).json({
             success:true,
-            user,
+             user,
             message:'data fetched successfully...'
         })
 
@@ -62,11 +64,15 @@ const getUser  = async (req, res) =>{
     }
 }
 
+
 const updateUser = async(req,res)=>{
-    try {
-         const {name, email, empId} = req.body
+    try { 
+     
+        const {name, email, empId} = req.body
 
         let {userid} = req.params
+
+        // console.log(userid, name, email, empId)
 
         let user = await User.findById(userid)
 
@@ -78,6 +84,7 @@ const updateUser = async(req,res)=>{
         }
 
         let updatedUser = user
+
         if(name){
             updatedUser = await User.findByIdAndUpdate(userid, {name} ,{new:true})
         }
@@ -101,8 +108,8 @@ const updateUser = async(req,res)=>{
 
     } catch (error) {
             res.status(500).json({
-                message:'failed to updated data internal server error',
-                success:false
+                success:false,
+                message:'failed to updated data internal server error',error
             })
     }
 }
@@ -123,7 +130,7 @@ const deleteUser = async (req,res)=>{
     } catch (error) {
         res.status(500).json({
             success:false,
-            message:'failed to delete user'
+            message:'failed to delete user',error
         })
     }
 
