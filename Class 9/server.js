@@ -6,6 +6,7 @@ import connectDb from './database/mogodb.js'
 import router from './routes/userRoute.js'
 
 const port = 4000
+
 app.use(express.json())
 
 app.use(router)

@@ -2,6 +2,7 @@ import User from "../models/user.js";
 import jsonwebtoken from 'jsonwebtoken'
 
 import bcrypt from 'bcrypt'
+
 const signup = async (req, res) => {
     try {
         let { name, email, password, role } = req.body
@@ -58,6 +59,7 @@ const signup = async (req, res) => {
 const login = async (req, res) => {
     try {
         const { email, password } = req.body
+
         if (!email || !password) {
             return res.status(404).json({
                 success: false,
@@ -82,8 +84,9 @@ const login = async (req, res) => {
             let token = jsonwebtoken.sign({ userid: user._id }, 'studentKey', { expiresIn: '3d' })
 
 
-            res.cookie('tokenCookie', token, { maxAage: 3 * 24 * 60 * 60 * 1000 })
-                .status(200).json({
+            res.cookie('tokenCookie', token, { maxAage: 3 * 24 * 60 * 60 * 1000, httpOnly:true , secure:true})
+                .status(200)
+                .json({
                     success: true,
                     token,
                     message: 'user created successfully....'
@@ -107,18 +110,6 @@ const login = async (req, res) => {
 }
 
 
-
-let students = ['ankit', 'rahul', 'priya']
-
-
-
-const getuser = async (req, res) => {
-    try {
-        res.send(students)
-    } catch (error) {
-
-    }
-}
 
 
 
